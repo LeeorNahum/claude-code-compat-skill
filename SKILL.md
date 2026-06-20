@@ -4,7 +4,7 @@ description: "Keep Claude Code in sync with cross-tool Agent Skills and AGENTS.m
 compatibility: "Requires Node. Designed for Claude Code."
 metadata:
   author: "Leeor Nahum"
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Claude Code Compatibility
@@ -15,7 +15,8 @@ Claude Code natively reads `CLAUDE.md` and discovers skills under `.claude/skill
 
 A `CLAUDE.md` at the repository root containing a single managed block between guard comments:
 
-- An `@AGENTS.md` import, so Claude Code loads the repository's `AGENTS.md`.
+- An `@AGENTS.md` import, so Claude Code loads the repository's root `AGENTS.md`.
+- A standing "Nested AGENTS.md" directive telling the agent to read a directory's own `AGENTS.md` before working in it. Claude Code only imports the root `AGENTS.md`, so nested ones (under a package, app, or skill directory) would otherwise be missed; this keeps their local rules in force.
 - An Agent Skills Index that lists every skill under `.agents/skills` by canonical name and description only. That is the Agent Skills startup tier. Claude Code reads a skill's full `SKILL.md` on demand, the same way it treats a native skill.
 
 Only the block is generated. Any content you keep in `CLAUDE.md` outside the block is preserved. To uninstall, delete the block or the whole `CLAUDE.md`.

@@ -77,6 +77,12 @@ function readSkills() {
 function buildBlock(hasAgents, skills) {
   const lines = [BEGIN, ''];
   if (hasAgents) lines.push('@AGENTS.md', '');
+  lines.push(
+    '# Nested AGENTS.md',
+    '',
+    "Before you create, edit, or run files in a directory, read that directory's `AGENTS.md` first when one exists. Only the root `AGENTS.md` is imported above; nested `AGENTS.md` files hold local rules for their own subtree and are not auto-loaded. The closest `AGENTS.md` at or above a file governs work on that file, so check for one whenever you enter a new part of the tree (a package, an app, or a skill directory).",
+    ''
+  );
   if (skills.length) {
     lines.push('# Agent Skills Index', '');
     for (const s of skills) {
