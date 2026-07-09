@@ -11,9 +11,10 @@ Claude Code reads `CLAUDE.md` and `.claude/skills`. Repositories that follow the
 Running the generator writes one managed block into `CLAUDE.md`:
 
 - Imports the repository's `AGENTS.md`
-- Lists each skill under `.agents/skills` by name and description, which is the Agent Skills startup tier
+- Lists each skill under `.agents/skills` by name, direct `SKILL.md` path, and description
+- Tells Claude Code to read the listed `SKILL.md` path directly when a skill is relevant, because these project skills are not native slash-command skills
 
-Claude Code then loads a skill's full `SKILL.md` on demand, the same way it treats a native skill. Anything you keep in `CLAUDE.md` outside the block is left untouched.
+Claude Code then has the trigger description and direct file path it needs to load the project skill. Anything you keep in `CLAUDE.md` outside the block is left untouched.
 
 ## Use
 

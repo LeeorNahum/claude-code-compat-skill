@@ -84,7 +84,14 @@ function buildBlock(hasAgents, skills) {
     ''
   );
   if (skills.length) {
-    lines.push('# Agent Skills Index', '');
+    lines.push(
+      '# Agent Skills Index',
+      '',
+      'These project skills are not Claude Code slash-command skills. When a listed skill is relevant, read its `SKILL.md` path directly instead of trying a Skill tool or slash command.',
+      '',
+      'Each description is the trigger. Respect it, and when it matches the task, read the skill\'s `SKILL.md` plus any relevant references, assets, scripts, or nearby root files the skill points to.',
+      ''
+    );
     for (const s of skills) {
       lines.push(`## ${s.name}`, '', '`' + s.path + '`', '', `> ${s.description || '(no description)'}`, '');
     }
