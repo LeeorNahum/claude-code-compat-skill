@@ -4,7 +4,7 @@ description: "Keep Claude Code in sync with cross-tool Agent Skills and AGENTS.m
 compatibility: "Requires Node. Designed for Claude Code."
 metadata:
   author: "Leeor Nahum"
-  version: "1.1.1"
+  version: "2.0.0"
 ---
 
 # Claude Code Compatibility

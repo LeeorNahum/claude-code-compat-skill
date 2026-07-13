@@ -93,7 +93,7 @@ function buildBlock(hasAgents, skills) {
       ''
     );
     for (const s of skills) {
-      lines.push(`## ${s.name}`, '', '`' + s.path + '`', '', `> ${s.description || '(no description)'}`, '');
+      lines.push(`## [${s.name}](${s.path})`, '', `> ${s.description || '(no description)'}`, '');
     }
   }
   while (lines[lines.length - 1] === '') lines.pop();
