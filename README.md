@@ -21,7 +21,7 @@ Claude Code then has the trigger description and direct file path it needs to lo
 From the repository root:
 
 ```sh
-node scripts/claude-compat.mjs
+node .agents/skills/claude-code-compat/scripts/claude-compat.mjs
 ```
 
 Run it whenever skills change. The block is regenerated in place, idempotently. Requires Node, with no dependencies. See `SKILL.md` for the full trigger conditions and behavior.
