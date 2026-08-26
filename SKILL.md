@@ -4,7 +4,7 @@ description: "Keep Claude Code in sync with cross-tool Agent Skills and AGENTS.m
 compatibility: "Requires Node. Designed for Claude Code."
 metadata:
   author: "Leeor Nahum"
-  version: "2.0.1"
+  version: "2.1.0"
 ---
 
 # Claude Code Compatibility
@@ -23,11 +23,17 @@ Only the block is generated. Any content you keep in `CLAUDE.md` outside the blo
 
 ## When to run it
 
-Run the generator from the repository root whenever the bridge could be stale:
+Run the generator from the repository root whenever the bridge could be stale. It is one zero-dependency Node script, and both routes below run the same file:
 
 ```sh
-node .agents/skills/claude-code-compat/scripts/claude-compat.mjs
+# Skill on disk (a repository .agents/skills install or a global skills folder)
+node <skill-root>/scripts/claude-compat.mjs
+
+# Skill not on disk (served from the public repository)
+npx --yes github:LeeorNahum/claude-code-compat-skill
 ```
+
+Node is the only requirement either way. The remote route needs network access when npm has not cached the package. Run it from where the skill lives rather than from a copy, because a copy drifts.
 
 Run it after any of these:
 

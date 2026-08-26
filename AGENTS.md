@@ -8,6 +8,7 @@ Rules for editing this skill. User-facing guidance lives in `SKILL.md`. `README.
 | --- | --- |
 | `SKILL.md` | Trigger, what the generator produces, when to run it, behavior |
 | `scripts/claude-compat.mjs` | The generator, source of truth for the `CLAUDE.md` block |
+| `package.json` | Package metadata and the `claude-code-compat` executable mapping |
 | `README.md` | Short human summary |
 
 ## Editing
@@ -26,5 +27,6 @@ Rules for editing this skill. User-facing guidance lives in `SKILL.md`. `README.
 ## Before finishing
 
 - The README install command matches the actual path once installed under `.agents/skills/claude-code-compat`.
+- The package version matches `metadata.version`, and its `bin` points to the generator.
 - `metadata.version` bumped if and only if behavior changed.
 - `README.md` matches the actual file layout.

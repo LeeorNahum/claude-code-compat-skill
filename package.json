@@ -1,0 +1,12 @@
+{
+  "name": "claude-code-compat",
+  "version": "2.1.0",
+  "description": "Regenerates the Claude Code compatibility block from AGENTS.md and installed Agent Skills.",
+  "type": "module",
+  "bin": {
+    "claude-code-compat": "scripts/claude-compat.mjs"
+  },
+  "files": [
+    "scripts/claude-compat.mjs"
+  ]
+}

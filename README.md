@@ -18,10 +18,14 @@ Claude Code then has the trigger description and direct file path it needs to lo
 
 ## Use
 
-From the repository root:
+From the repository root, use either route:
 
 ```sh
-node .agents/skills/claude-code-compat/scripts/claude-compat.mjs
+# Installed skill
+node <skill-root>/scripts/claude-compat.mjs
+
+# Public repository
+npx --yes github:LeeorNahum/claude-code-compat-skill
 ```
 
-Run it whenever skills change. The block is regenerated in place, idempotently. Requires Node, with no dependencies. See `SKILL.md` for the full trigger conditions and behavior.
+Run it whenever skills change. The block is regenerated in place, idempotently. Node is the only requirement. See `SKILL.md` for the full trigger conditions and behavior.
