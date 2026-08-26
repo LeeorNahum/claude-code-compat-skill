@@ -33,7 +33,7 @@ node <skill-root>/scripts/claude-compat.mjs
 npx --yes github:LeeorNahum/claude-code-compat-skill
 ```
 
-Node is the only requirement either way. The remote route needs network access when npm has not cached the package. Run it from where the skill lives rather than from a copy, because a copy drifts.
+Node is the only requirement either way. The remote route needs network access when npm has not cached the package.
 
 Run it after any of these:
 
