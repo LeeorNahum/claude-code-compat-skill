@@ -1,6 +1,6 @@
 {
   "name": "claude-code-compat",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Regenerates the Claude Code compatibility block from AGENTS.md and installed Agent Skills.",
   "type": "module",
   "bin": {

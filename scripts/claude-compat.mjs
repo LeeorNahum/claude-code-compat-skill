@@ -14,6 +14,15 @@ const BEGIN = '<!-- BEGIN claude-code-compat (generated, do not edit) -->';
 const END = '<!-- END claude-code-compat -->';
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
+if (process.argv.includes('--help')) {
+  console.log(
+    'Usage: claude-code-compat\n' +
+      'Regenerates the managed Claude Code compatibility block in ./CLAUDE.md.\n' +
+      'Run from the repository root. Exits without writing when --help is passed.'
+  );
+  process.exit(0);
+}
+
 // Read the spec startup tier: name + description. Parses top-level frontmatter
 // keys only. Handles double and single quotes, plain scalars (including values
 // that contain a colon), and block scalars (| literal and > folded). Nested
@@ -49,7 +58,7 @@ function parseFrontmatter(md) {
   return name ? { name, description: (top.description || '').trim() } : null;
 }
 
-// Strip matching YAML quotes; leave unquoted scalars (even with colons) as-is.
+// Strip matching YAML quotes. Leave unquoted scalars (even with colons) as-is.
 function unquote(s) {
   if (s.startsWith('"') && s.length > 1) {
     return s.slice(1).replace(/"\s*$/, '').replace(/\\"/g, '"').replace(/\\\\/g, '\\');
@@ -80,7 +89,7 @@ function buildBlock(hasAgents, skills) {
   lines.push(
     '# Nested AGENTS.md',
     '',
-    "Before you create, edit, or run files in a directory, read that directory's `AGENTS.md` first when one exists. Only the root `AGENTS.md` is imported above; nested `AGENTS.md` files hold local rules for their own subtree and are not auto-loaded. The closest `AGENTS.md` at or above a file governs work on that file, so check for one whenever you enter a new part of the tree (a package, an app, or a skill directory).",
+    "Before you create, edit, or run files in a directory, read that directory's `AGENTS.md` first when one exists. Only the root `AGENTS.md` is imported above. Nested `AGENTS.md` files hold local rules for their own subtree and are not auto-loaded. The closest `AGENTS.md` at or above a file governs work on that file, so check for one whenever you enter a new part of the tree (a package, an app, or a skill directory).",
     ''
   );
   if (skills.length) {

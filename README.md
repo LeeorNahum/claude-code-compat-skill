@@ -11,6 +11,7 @@ Claude Code reads `CLAUDE.md` and `.claude/skills`. Repositories that follow the
 Running the generator writes one managed block into `CLAUDE.md`:
 
 - Imports the repository's `AGENTS.md`
+- Tells Claude Code to read a directory's own `AGENTS.md` before working in it, since only the root one is imported
 - Lists each skill under `.agents/skills` by name, direct `SKILL.md` path, and description
 - Tells Claude Code to read the listed `SKILL.md` path directly when a skill is relevant, because these project skills are not native slash-command skills
 
@@ -21,11 +22,11 @@ Claude Code then has the trigger description and direct file path it needs to lo
 From the repository root, use either route:
 
 ```sh
-# Installed skill
-node <skill-root>/scripts/claude-compat.mjs
-
 # Public repository
 npx --yes github:LeeorNahum/claude-code-compat-skill
+
+# Installed skill
+node <skill-root>/scripts/claude-compat.mjs
 ```
 
-Run it whenever skills change. The block is regenerated in place, idempotently. Node is the only requirement. See `SKILL.md` for the full trigger conditions and behavior.
+Run it whenever skills change. The block is regenerated in place, idempotently. Both routes require Node.js. The public repository route also requires npm and network access when uncached. See `SKILL.md` for the full trigger conditions and behavior.
