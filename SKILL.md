@@ -4,7 +4,7 @@ description: "Use whenever anything under .agents changes, such as a skill being
 compatibility: "Requires Node.js. Remote execution also requires npm and network access when uncached. Designed for Claude Code."
 metadata:
   author: "Leeor Nahum"
-  version: "2.2.0"
+  version: "2.2.1"
 ---
 
 # Claude Code Compatibility
@@ -16,7 +16,7 @@ Claude Code natively reads `CLAUDE.md` and discovers skills under `.claude/skill
 A `CLAUDE.md` at the repository root containing a single managed block between guard comments:
 
 - An `@AGENTS.md` import, so Claude Code loads the repository's root `AGENTS.md`.
-- A standing "Nested AGENTS.md" directive telling the agent to read a directory's own `AGENTS.md` before working in it. Claude Code only imports the root `AGENTS.md`, so nested ones (under a package, app, or skill directory) would otherwise be missed. This keeps their local rules in force.
+- A standing "Nested AGENTS.md" directive telling the agent to read a directory's own `AGENTS.md` before working in it, unless it is already in context. Claude Code loads only the root `AGENTS.md` and the files it imports, so other nested ones (under a package, app, or skill directory) would otherwise be missed. This keeps their local rules in force.
 - An Agent Skills Index that lists every skill under `.agents/skills` by canonical name, path, and description. Claude Code should read the listed `SKILL.md` path directly when a description matches, because these project skills are not native slash-command skills.
 
 Only the block is generated. Any content you keep in `CLAUDE.md` outside the block is preserved.
@@ -37,6 +37,7 @@ Run it after any of these:
 
 - A skill is added, removed, or renamed under `.agents/skills`
 - A skill's `name` or `description` changes
+- This skill is updated, since the text of the block may have changed
 - `AGENTS.md` is added to a repo that has no `CLAUDE.md` yet
 - You arrive in a repo for Claude Code and `CLAUDE.md` is missing or out of date
 
